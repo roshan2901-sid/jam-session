@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import Tickets from "./pages/Tickets"
 import Summary from "./pages/Summary"
-import Success from "./pages/success"
-import Admin from "./pages/Admin"
+import Success from "./pages/Success"
+import AdminScan from "./pages/AdminScan"
 
 function App() {
 
@@ -36,7 +36,7 @@ function App() {
 
         <Route
           path="/admin"
-          element={<Admin />}
+          element={<AdminScan />}
         />
 
       </Routes>
