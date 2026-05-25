@@ -1,15 +1,25 @@
+import { useLocation } from "react-router-dom"
 import { useState } from "react"
 
 function Summary() {
+
+  const location = useLocation()
+
+  const {
+    name,
+    generalCount,
+    kidsCount,
+    total
+  } = location.state
 
   const [utr, setUtr] = useState("")
   const [screenshot, setScreenshot] = useState(null)
   const [submitted, setSubmitted] = useState(false)
 
-  const amount = 150
+  // DYNAMIC UPI LINK
 
   const upiLink =
-  `upi://pay?pa=8341353673-2@ybl&pn=ManaPaata&am=${amount}&cu=INR`
+    `upi://pay?pa=8341353673-2@ybl&pn=ManaPaata&am=${total}&cu=INR`
 
   const handleSubmit = () => {
 
@@ -19,7 +29,9 @@ function Summary() {
 
     setSubmitted(true)
 
-    // FIREBASE SAVE HERE LATER
+    // FIREBASE SAVE LATER
+
+    alert("Payment submitted for verification!")
 
   }
 
@@ -27,12 +39,12 @@ function Summary() {
 
     <div className="min-h-screen bg-black text-white px-5 py-10">
 
-      {/* PAYMENT CARD */}
-
       <div className="max-w-md mx-auto bg-[#0b0b0b] border border-yellow-500 rounded-3xl p-6 shadow-[0_0_40px_rgba(255,200,0,0.15)]">
 
-        <h1 className="text-3xl font-bold text-center mb-8 tracking-widest text-yellow-400">
-          SCAN TO PAY
+        {/* TITLE */}
+
+        <h1 className="text-4xl font-black text-center text-yellow-400 tracking-[0.25em] mb-8">
+          PAYMENT
         </h1>
 
         {/* QR */}
@@ -40,46 +52,66 @@ function Summary() {
         <div className="bg-white rounded-3xl p-5 flex justify-center">
 
           <img
-  src="/qr.png"
-  alt="UPI QR"
-  className="w-72 h-72 object-contain"
-/>
+            src="/qr.png"
+            alt="UPI QR"
+            className="w-72 h-72 object-contain"
+          />
 
         </div>
 
-        {/* PAYMENT DETAILS */}
+        {/* DETAILS */}
 
-        <div className="text-center mt-6 space-y-2">
+        <div className="text-center mt-8 space-y-4">
 
-          <p className="text-gray-400 uppercase tracking-widest text-sm">
-            UPI ID
-          </p>
+          <div>
 
-          <p className="text-yellow-400 text-2xl font-bold">
-            8328477757@ybl
-          </p>
+            <p className="text-gray-400 tracking-widest text-sm">
+              TICKET HOLDER
+            </p>
 
-          <p className="text-gray-400 mt-4">
-            Amount
-          </p>
+            <h2 className="text-2xl font-bold text-white">
+              {name}
+            </h2>
 
-          <p className="text-5xl font-black text-red-500">
-            ₹{amount}
-          </p>
+          </div>
+
+          <div>
+
+            <p className="text-gray-400 tracking-widest text-sm">
+              UPI ID
+            </p>
+
+            <h2 className="text-yellow-400 text-xl font-bold break-all">
+              8341353673-2@ybl
+            </h2>
+
+          </div>
+
+          <div>
+
+            <p className="text-gray-400 tracking-widest text-sm">
+              TOTAL AMOUNT
+            </p>
+
+            <h1 className="text-6xl font-black text-red-500 mt-2">
+              ₹{total}
+            </h1>
+
+          </div>
 
         </div>
 
-        {/* OPEN UPI BUTTON */}
+        {/* PAY BUTTON */}
 
         <a
           href={upiLink}
-          className="block mt-8"
+          className="block mt-10"
         >
 
           <button
-            className="w-full bg-green-600 hover:bg-green-500 transition-all duration-300 py-4 rounded-2xl text-xl font-bold shadow-[0_0_25px_rgba(0,255,100,0.35)]"
+            className="w-full bg-green-600 hover:bg-green-500 transition-all duration-300 py-5 rounded-2xl text-2xl font-black shadow-[0_0_30px_rgba(0,255,120,0.4)] hover:scale-[1.02]"
           >
-            PAY VIA UPI APP
+            PAY ₹{total}
           </button>
 
         </a>
@@ -95,11 +127,11 @@ function Summary() {
           <div className="space-y-4 text-gray-300">
 
             <p>
-              1. Open GPay / PhonePe / Paytm
+              1. Click PAY button
             </p>
 
             <p>
-              2. Scan QR and pay exact amount
+              2. Complete payment in GPay / PhonePe / Paytm
             </p>
 
             <p>
@@ -111,7 +143,7 @@ function Summary() {
             </p>
 
             <p>
-              5. Upload proof below
+              5. Upload payment proof below
             </p>
 
           </div>
@@ -122,7 +154,7 @@ function Summary() {
 
         <div className="mt-10">
 
-          <h2 className="text-xl tracking-[0.3em] text-red-400 mb-4">
+          <h2 className="text-xl tracking-[0.25em] text-red-400 mb-4">
             PAYMENT SCREENSHOT
           </h2>
 
@@ -137,7 +169,7 @@ function Summary() {
               onChange={(e) => setScreenshot(e.target.files[0])}
             />
 
-            <span className="text-2xl font-bold text-red-400">
+            <span className="text-xl font-bold text-red-400 text-center">
 
               {screenshot
                 ? "SCREENSHOT UPLOADED ✅"
@@ -153,7 +185,7 @@ function Summary() {
 
         <div className="mt-8">
 
-          <h2 className="text-xl tracking-[0.3em] text-white mb-4">
+          <h2 className="text-xl tracking-[0.25em] text-white mb-4">
             UTR / TRANSACTION ID
           </h2>
 
@@ -169,14 +201,14 @@ function Summary() {
 
         {/* INFO */}
 
-        <div className="mt-8 bg-blue-500/10 border border-blue-500 rounded-2xl p-5 text-blue-300">
+        <div className="mt-8 bg-blue-500/10 border border-blue-500 rounded-2xl p-5 text-blue-300 leading-relaxed">
 
           Your payment will be manually verified by admin.
-          Ticket will be activated after approval.
+          Ticket will be activated only after successful verification.
 
         </div>
 
-        {/* BUTTON */}
+        {/* SUBMIT */}
 
         <button
 
