@@ -16,10 +16,10 @@ function Summary() {
   const [screenshot, setScreenshot] = useState(null)
   const [submitted, setSubmitted] = useState(false)
 
-  // DYNAMIC UPI LINK
+  const upiId = "8341353673-2@ybl"
 
   const upiLink =
-    `upi://pay?pa=8341353673-2@ybl&pn=ManaPaata&am=${total}&cu=INR`
+    `upi://pay?pa=${upiId}&pn=ManaPaata&am=${total}&cu=INR`
 
   const handleSubmit = () => {
 
@@ -29,9 +29,15 @@ function Summary() {
 
     setSubmitted(true)
 
-    // FIREBASE SAVE LATER
-
     alert("Payment submitted for verification!")
+
+  }
+
+  const copyUpi = async () => {
+
+    await navigator.clipboard.writeText(upiId)
+
+    alert("UPI ID copied!")
 
   }
 
@@ -82,7 +88,7 @@ function Summary() {
             </p>
 
             <h2 className="text-yellow-400 text-xl font-bold break-all">
-              8341353673-2@ybl
+              {upiId}
             </h2>
 
           </div>
@@ -101,20 +107,37 @@ function Summary() {
 
         </div>
 
-        {/* PAY BUTTON */}
+        {/* BUTTONS */}
 
-        <a
-          href={upiLink}
-          className="block mt-10"
-        >
+        <div className="mt-10 space-y-4">
 
           <button
-            className="w-full bg-green-600 hover:bg-green-500 transition-all duration-300 py-5 rounded-2xl text-2xl font-black shadow-[0_0_30px_rgba(0,255,120,0.4)] hover:scale-[1.02]"
+            onClick={copyUpi}
+            className="w-full bg-yellow-500 hover:bg-yellow-400 text-black transition-all duration-300 py-4 rounded-2xl text-xl font-bold"
           >
-            PAY ₹{total}
+            COPY UPI ID
           </button>
 
-        </a>
+          <a href={upiLink}>
+
+            <button
+              className="w-full bg-green-600 hover:bg-green-500 transition-all duration-300 py-4 rounded-2xl text-xl font-bold shadow-[0_0_25px_rgba(0,255,100,0.35)]"
+            >
+              TRY OPENING UPI APP
+            </button>
+
+          </a>
+
+        </div>
+
+        {/* INFO */}
+
+        <div className="mt-6 bg-yellow-500/10 border border-yellow-500 rounded-2xl p-4 text-yellow-300 text-center leading-relaxed">
+
+          If payment app does not open,
+          scan the QR directly or paste the copied UPI ID in GPay / PhonePe.
+
+        </div>
 
         {/* HOW TO PAY */}
 
@@ -127,11 +150,11 @@ function Summary() {
           <div className="space-y-4 text-gray-300">
 
             <p>
-              1. Click PAY button
+              1. Scan QR or open UPI app
             </p>
 
             <p>
-              2. Complete payment in GPay / PhonePe / Paytm
+              2. Pay exact amount ₹{total}
             </p>
 
             <p>
