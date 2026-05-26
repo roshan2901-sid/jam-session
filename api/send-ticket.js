@@ -13,7 +13,10 @@ export default async function handler(req, res) {
 
   try {
 
-    const { email, name, ticketId } = req.body;
+    const { email, name } = req.body;
+
+const ticketId =
+  "OYM-" + Math.floor(100000 + Math.random() * 900000);
 
     console.log("Sending email to:", email);
 
