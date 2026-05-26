@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     const ticketId =
       "OYM-" + Math.floor(100000 + Math.random() * 900000);
 
-    const qrCodeData = await QRCode.toDataURL(ticketId, {
+    const qrCodeBuffer = await QRCode.toBuffer(ticketId, {
       width: 300,
       margin: 2,
     });
@@ -72,29 +72,11 @@ export default async function handler(req, res) {
             Ticket ID: ${ticketId}
           </p>
 
-          <div style="
-            background:white;
-            padding:20px;
-            border-radius:20px;
-            display:inline-block;
-            margin-top:35px;
-          ">
-
-            <img
-              src="${qrCodeData}"
-              alt="QR Code"
-              width="220"
-              height="220"
-              style="display:block;"
-            />
-
-          </div>
-
           <p style="
             margin-top:30px;
             font-size:18px;
           ">
-            Show this QR at entry.
+            Your QR ticket is attached below.
           </p>
 
           <p style="
@@ -108,6 +90,14 @@ export default async function handler(req, res) {
 
         </div>
       `,
+
+      attachments: [
+        {
+          filename: "ticket-qr.png",
+          content: qrCodeBuffer.toString("base64"),
+        },
+      ],
+
     });
 
     console.log("Resend response:", response);
