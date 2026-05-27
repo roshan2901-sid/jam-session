@@ -131,14 +131,6 @@ function Summary() {
 
           <div>
 
-            <p className="text-gray-400 tracking-widest text-sm">
-              EMAIL
-            </p>
-
-            <h2 className="text-yellow-400 text-lg font-bold break-all">
-              {email}
-            </h2>
-
           </div>
 
           <div>
