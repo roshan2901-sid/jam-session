@@ -33,13 +33,21 @@ function Summary() {
   const handleSubmit = async () => {
 
     if (!screenshot || !utr) {
+
+      alert("Please upload screenshot and enter UTR");
+
       return;
+
     }
 
     try {
 
+      console.log("SUBMIT BUTTON CLICKED");
+
       const ticketId =
         "OYM-" + Math.floor(100000 + Math.random() * 900000);
+
+      console.log("Trying to save booking...");
 
       await addDoc(collection(db, "bookings"), {
 
@@ -59,13 +67,15 @@ function Summary() {
 
       });
 
+      console.log("Booking saved successfully!");
+
       setSubmitted(true);
 
       alert("Payment submitted for verification!");
 
     } catch (error) {
 
-      console.error(error);
+      console.error("FIREBASE ERROR:", error);
 
       alert("Failed to submit booking");
 
