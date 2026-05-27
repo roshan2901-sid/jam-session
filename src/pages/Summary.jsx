@@ -27,8 +27,6 @@ function Summary() {
 
   const upiId = "8341353673-2@ybl";
 
-  const upiLink =
-    `upi://pay?pa=${upiId}&pn=ManaPaata&am=${total}&cu=INR`;
 
   const handleSubmit = async () => {
 
@@ -180,21 +178,11 @@ function Summary() {
             COPY UPI ID
           </button>
 
-          <a href={upiLink}>
-
-            <button
-              className="w-full bg-green-600 hover:bg-green-500 transition-all duration-300 py-4 rounded-2xl text-xl font-bold shadow-[0_0_25px_rgba(0,255,100,0.35)]"
-            >
-              TRY OPENING UPI APP
-            </button>
-
-          </a>
-
         </div>
 
         {/* INFO */}
 
-        <div className="mt-6 bg-yellow-500/10 border border-yellow-500 rounded-2xl p-4 text-yellow-300 text-center leading-relaxed">
+        <div className="mt-6 bg-red-500/10 border border-red-500 rounded-2xl p-4 text-red-300 text-center leading-relaxed">
 
           If payment app does not open,
           scan the QR directly or paste the copied UPI ID in GPay / PhonePe.
