@@ -174,13 +174,6 @@ function Summary() {
 
         {/* INFO */}
 
-        <div className="mt-6 bg-red-500/10 border border-red-500 rounded-2xl p-4 text-red-300 text-center leading-relaxed">
-
-          If payment app does not open,
-          scan the QR directly or paste the copied UPI ID in GPay / PhonePe.
-
-        </div>
-
         {/* HOW TO PAY */}
 
         <div className="mt-10 border border-yellow-700 rounded-2xl p-5 bg-[#111111]">
