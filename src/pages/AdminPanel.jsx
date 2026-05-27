@@ -166,6 +166,10 @@ function AdminPanel() {
               </p>
 
               <p>
+  <strong>UTR:</strong> {booking.utr}
+</p>
+
+              <p>
                 <strong>Ticket ID:</strong> {booking.ticketId}
               </p>
 
