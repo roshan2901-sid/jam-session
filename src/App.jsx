@@ -5,6 +5,7 @@ import Tickets from "./pages/Tickets.jsx";
 import Summary from "./pages/Summary.jsx";
 import Success from "./pages/Success.jsx";
 import AdminScan from "./pages/AdminScan.jsx";
+import AdminPanel from "./pages/AdminPanel";
 
 function App() {
 
@@ -84,6 +85,7 @@ function App() {
           <Route path="/summary" element={<Summary />} />
           <Route path="/success" element={<Success />} />
           <Route path="/admin" element={<AdminScan />} />
+          <Route path="/admin-panel" element={<AdminPanel />} />
 
         </Routes>
 
