@@ -59,25 +59,6 @@ function App() {
 
       <div>
 
-        <button
-          onClick={sendTestEmail}
-          style={{
-            position: "fixed",
-            top: "20px",
-            right: "20px",
-            zIndex: "9999",
-            padding: "12px 20px",
-            background: "red",
-            color: "white",
-            border: "none",
-            borderRadius: "10px",
-            cursor: "pointer",
-            fontWeight: "bold",
-          }}
-        >
-          Send Test Email
-        </button>
-
         <Routes>
 
           <Route path="/" element={<Home />} />
