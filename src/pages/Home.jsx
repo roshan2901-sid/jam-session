@@ -13,25 +13,27 @@ function Home() {
 
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center">
 
-        <div className="flex items-center justify-center gap-6 mb-8 flex-wrap">
+        <div className="flex items-center justify-center gap-6 mb-12">
 
-          <img
-            src={onesoul}
-            alt=""
-            className="w-40 h-40 md:w-56 md:h-56 object-cover rounded-full border-4 border-red-500 shadow-[0_0_35px_rgba(255,0,0,0.8)]"
-          />
+  <img
+    src="/onesoul.png"
+    alt="One Soul"
+    className="w-28 md:w-36 object-contain"
+  />
 
-          <span className="text-red-500 text-4xl md:text-6xl font-bold">
-            ×
-          </span>
+  <h1
+    className="text-4xl md:text-6xl font-black text-red-500 drop-shadow-[0_0_20px_rgba(255,0,0,0.9)]"
+  >
+    ×
+  </h1>
 
-          <img
-            src={maya}
-            alt=""
-            className="w-40 h-40 md:w-56 md:h-56 object-cover rounded-full border-4 border-red-500 shadow-[0_0_35px_rgba(255,0,0,0.8)]"
-          />
+  <img
+    src="/maya.png"
+    alt="Maya"
+    className="w-28 md:w-36 object-contain"
+  />
 
-        </div>
+</div>
 
        <p className="text-gray-300 text-lg md:text-2xl tracking-[0.3em] mb-1">
   MANA PAATA
