@@ -279,7 +279,8 @@ function Summary() {
         <div className="mt-8 bg-blue-500/10 border border-blue-500 rounded-2xl p-5 text-blue-300 leading-relaxed">
 
           Your payment will be manually verified by admin.
-          Ticket will be activated only after successful verification.
+          The Ticket will be sent to your gmail after verification
+          Verification  Time:- 1-2hrs
 
         </div>
 
