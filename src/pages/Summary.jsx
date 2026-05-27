@@ -1,53 +1,91 @@
-import { useLocation } from "react-router-dom"
-import { useState } from "react"
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+
+import {
+  collection,
+  addDoc
+} from "firebase/firestore";
+
+import { db } from "../firebase";
 
 function Summary() {
 
-  const location = useLocation()
+  const location = useLocation();
 
   const {
     name,
+    phone,
+    email,
     generalCount,
     kidsCount,
     total
-  } = location.state
+  } = location.state;
 
-  const [utr, setUtr] = useState("")
-  const [screenshot, setScreenshot] = useState(null)
-  const [submitted, setSubmitted] = useState(false)
+  const [utr, setUtr] = useState("");
+  const [screenshot, setScreenshot] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
-  const upiId = "8341353673-2@ybl"
+  const upiId = "8341353673-2@ybl";
 
   const upiLink =
-    `upi://pay?pa=${upiId}&pn=ManaPaata&am=${total}&cu=INR`
+    `upi://pay?pa=${upiId}&pn=ManaPaata&am=${total}&cu=INR`;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
 
     if (!screenshot || !utr) {
-      return
+      return;
     }
 
-    setSubmitted(true)
+    try {
 
-    alert("Payment submitted for verification!")
+      const ticketId =
+        "OYM-" + Math.floor(100000 + Math.random() * 900000);
 
-  }
+      await addDoc(collection(db, "bookings"), {
+
+        name,
+        phone,
+        email,
+
+        generalCount,
+        kidsCount,
+
+        total,
+        utr,
+
+        ticketId,
+
+        createdAt: new Date(),
+
+      });
+
+      setSubmitted(true);
+
+      alert("Payment submitted for verification!");
+
+    } catch (error) {
+
+      console.error(error);
+
+      alert("Failed to submit booking");
+
+    }
+
+  };
 
   const copyUpi = async () => {
 
-    await navigator.clipboard.writeText(upiId)
+    await navigator.clipboard.writeText(upiId);
 
-    alert("UPI ID copied!")
+    alert("UPI ID copied!");
 
-  }
+  };
 
   return (
 
     <div className="min-h-screen bg-black text-white px-5 py-10">
 
       <div className="max-w-md mx-auto bg-[#0b0b0b] border border-yellow-500 rounded-3xl p-6 shadow-[0_0_40px_rgba(255,200,0,0.15)]">
-
-        {/* TITLE */}
 
         <h1 className="text-4xl font-black text-center text-yellow-400 tracking-[0.25em] mb-8">
           PAYMENT
@@ -77,6 +115,18 @@ function Summary() {
 
             <h2 className="text-2xl font-bold text-white">
               {name}
+            </h2>
+
+          </div>
+
+          <div>
+
+            <p className="text-gray-400 tracking-widest text-sm">
+              EMAIL
+            </p>
+
+            <h2 className="text-yellow-400 text-lg font-bold break-all">
+              {email}
             </h2>
 
           </div>
@@ -149,25 +199,15 @@ function Summary() {
 
           <div className="space-y-4 text-gray-300">
 
-            <p>
-              1. Scan QR or open UPI app
-            </p>
+            <p>1. Scan QR or open UPI app</p>
 
-            <p>
-              2. Pay exact amount ₹{total}
-            </p>
+            <p>2. Pay exact amount ₹{total}</p>
 
-            <p>
-              3. Take payment screenshot
-            </p>
+            <p>3. Take payment screenshot</p>
 
-            <p>
-              4. Copy UTR / Transaction ID
-            </p>
+            <p>4. Copy UTR / Transaction ID</p>
 
-            <p>
-              5. Upload payment proof below
-            </p>
+            <p>5. Upload payment proof below</p>
 
           </div>
 
@@ -240,13 +280,11 @@ function Summary() {
           onClick={handleSubmit}
 
           className={`
-
             w-full mt-10 py-5 rounded-2xl text-2xl font-black transition-all duration-300
 
             ${!screenshot || !utr
               ? "bg-gray-700 cursor-not-allowed"
               : "bg-red-600 hover:bg-red-500 shadow-[0_0_35px_rgba(255,0,0,0.5)]"}
-
           `}
         >
 
@@ -259,7 +297,7 @@ function Summary() {
       </div>
 
     </div>
-  )
+  );
 }
 
-export default Summary
+export default Summary;
