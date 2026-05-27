@@ -13,24 +13,48 @@ function Home() {
 
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center">
 
-        <div className="flex items-center justify-center gap-6 mb-12">
+        <div className="flex items-center justify-center gap-4 md:gap-8 mb-10">
 
   <img
-    src="/onesoul.png"
+    src={onesoul}
     alt="One Soul"
-    className="w-28 md:w-36 object-contain"
+    className="
+      w-32 h-32
+      md:w-52 md:h-52
+      object-cover
+      rounded-full
+      border-4 border-red-500
+      shadow-[0_0_35px_rgba(255,0,0,0.8)]
+    "
   />
 
-  <h1
-    className="text-4xl md:text-6xl font-black text-red-500 drop-shadow-[0_0_20px_rgba(255,0,0,0.9)]"
-  >
-    ×
-  </h1>
+  <div className="flex items-center justify-center">
+
+    <span
+      className="
+        text-red-500
+        text-5xl md:text-7xl
+        font-black
+        leading-none
+        drop-shadow-[0_0_20px_rgba(255,0,0,0.9)]
+      "
+    >
+      ×
+    </span>
+
+  </div>
 
   <img
-    src="/maya.png"
+    src={maya}
     alt="Maya"
-    className="w-28 md:w-36 object-contain"
+    className="
+      w-32 h-32
+      md:w-52 md:h-52
+      object-cover
+      rounded-full
+      border-4 border-red-500
+      shadow-[0_0_35px_rgba(255,0,0,0.8)]
+    "
   />
 
 </div>
