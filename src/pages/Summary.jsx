@@ -63,6 +63,8 @@ function Summary() {
 
         ticketId,
 
+        approved: false,
+
         createdAt: new Date(),
 
       });

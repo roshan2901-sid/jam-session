@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import {
   collection,
   getDocs,
+  doc,
+  updateDoc,
 } from "firebase/firestore";
 
 import { db } from "../firebase";
@@ -27,11 +29,11 @@ function AdminPanel() {
 
       const bookingsArray = [];
 
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((docSnap) => {
 
         bookingsArray.push({
-          id: doc.id,
-          ...doc.data(),
+          id: docSnap.id,
+          ...docSnap.data(),
         });
 
       });
@@ -73,7 +75,16 @@ function AdminPanel() {
 
       if (response.ok) {
 
+        await updateDoc(
+          doc(db, "bookings", booking.id),
+          {
+            approved: true,
+          }
+        );
+
         alert("Ticket Sent Successfully!");
+
+        fetchBookings();
 
       } else {
 
@@ -154,6 +165,10 @@ function AdminPanel() {
               </p>
 
               <p>
+                <strong>Phone:</strong> {booking.phone}
+              </p>
+
+              <p>
                 <strong>General Tickets:</strong> {booking.generalCount}
               </p>
 
@@ -166,29 +181,45 @@ function AdminPanel() {
               </p>
 
               <p>
-  <strong>UTR:</strong> {booking.utr}
-</p>
+                <strong>UTR:</strong> {booking.utr}
+              </p>
 
               <p>
                 <strong>Ticket ID:</strong> {booking.ticketId}
               </p>
 
-              <button
-                onClick={() => approveBooking(booking)}
-                style={{
-                  marginTop: "20px",
-                  background: "red",
-                  color: "white",
-                  border: "none",
-                  padding: "12px 20px",
-                  borderRadius: "10px",
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                  fontSize: "16px",
-                }}
-              >
-                APPROVE & SEND TICKET
-              </button>
+              <p>
+                <strong>Status:</strong>{" "}
+
+                {booking.approved
+                  ? "APPROVED ✅"
+                  : "PENDING"}
+              </p>
+
+              {
+
+                !booking.approved && (
+
+                  <button
+                    onClick={() => approveBooking(booking)}
+                    style={{
+                      marginTop: "20px",
+                      background: "red",
+                      color: "white",
+                      border: "none",
+                      padding: "12px 20px",
+                      borderRadius: "10px",
+                      cursor: "pointer",
+                      fontWeight: "bold",
+                      fontSize: "16px",
+                    }}
+                  >
+                    APPROVE & SEND TICKET
+                  </button>
+
+                )
+
+              }
 
             </div>
 
