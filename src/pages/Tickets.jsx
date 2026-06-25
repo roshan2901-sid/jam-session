@@ -75,61 +75,43 @@ function Tickets() {
 
       </div>
 
-      {/* General Pass */}
-      <div className="bg-zinc-900 border border-red-500 rounded-3xl p-6 mb-6 shadow-[0_0_20px_rgba(255,0,0,0.3)]">
+      <div className="grid md:grid-cols-2 gap-6">
 
-        <h2 className="text-2xl font-bold mb-2">
-          General Jam Pass
-        </h2>
+  {/* General Pass */}
+  <div className="bg-zinc-900 border border-red-500 rounded-3xl p-6 shadow-[0_0_20px_rgba(255,0,0,0.3)]">
+    <h2 className="text-2xl font-bold mb-2">General Jam Pass</h2>
 
-        <p className="text-red-500 text-3xl font-bold mb-4 drop-shadow-[0_0_12px_rgba(255,0,0,0.9)]">
-          ₹269
-        </p>
+    <p className="text-red-500 text-3xl font-bold mb-4">
+      ₹269
+    </p>
 
-        <div className="text-gray-300 space-y-1 mb-6">
-          <p>✓ Entry Access</p>
-        </div>
+    <div className="text-gray-300 space-y-1 mb-6">
+      <p>✓ Entry Access</p>
+    </div>
 
-        <h2 className="text-2xl font-bold mb-2">
-  Group of 4 (Offer)
-</h2>
+    {/* Your General Pass + and - buttons */}
+  </div>
 
-<p className="text-red-500 text-3xl font-bold mb-1">
-  ₹1000
-</p>
+  {/* Group Pass */}
+  <div className="bg-zinc-900 border border-red-500 rounded-3xl p-6 shadow-[0_0_20px_rgba(255,0,0,0.3)]">
+    <h2 className="text-2xl font-bold mb-2">Group of 4</h2>
 
-<p className="text-green-400 text-sm mb-4">
-  Only ₹250 per person
-</p>
+    <p className="text-red-500 text-3xl font-bold mb-1">
+      ₹1000
+    </p>
 
-        {/* Counter */}
-        <div className="flex items-center gap-4">
+    <p className="text-green-400 mb-4">
+      Only ₹250 per person
+    </p>
 
-          <button
-            onClick={() =>
-              setGeneralCount(Math.max(0, generalCount - 1))
-            }
-            className="bg-red-600 w-10 h-10 rounded-full text-xl font-bold shadow-[0_0_15px_rgba(255,0,0,0.8)] hover:scale-110 transition-all"
-          >
-            -
-          </button>
+    <div className="text-gray-300 space-y-1 mb-6">
+      <p>✓ Entry for 4 People</p>
+    </div>
 
-          <span className="text-2xl font-bold text-red-400 drop-shadow-[0_0_10px_rgba(255,0,0,0.8)]">
-            {generalCount}
-          </span>
+    {/* Separate + and - buttons for Group Pass */}
+  </div>
 
-          <button
-            onClick={() =>
-              setGeneralCount(generalCount + 1)
-            }
-            className="bg-red-600 w-10 h-10 rounded-full text-xl font-bold shadow-[0_0_15px_rgba(255,0,0,0.8)] hover:scale-110 transition-all"
-          >
-            +
-          </button>
-
-        </div>
-      </div>
-
+</div>
       {/* Kids Pass */}
       <div className="bg-zinc-900 border border-red-500 rounded-3xl p-6 mb-28 shadow-[0_0_20px_rgba(255,0,0,0.3)]">
 
