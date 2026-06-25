@@ -83,14 +83,24 @@ function Tickets() {
         </h2>
 
         <p className="text-red-500 text-3xl font-bold mb-4 drop-shadow-[0_0_12px_rgba(255,0,0,0.9)]">
-          ₹279
+          ₹269
         </p>
 
         <div className="text-gray-300 space-y-1 mb-6">
           <p>✓ Entry Access</p>
-          <p>✓ 1 Beverage</p>
-          <p>✓ French Fries</p>
         </div>
+
+        <h2 className="text-2xl font-bold mb-2">
+  Group of 4 (Offer)
+</h2>
+
+<p className="text-red-500 text-3xl font-bold mb-1">
+  ₹1000
+</p>
+
+<p className="text-green-400 text-sm mb-4">
+  Only ₹250 per person
+</p>
 
         {/* Counter */}
         <div className="flex items-center gap-4">
@@ -128,7 +138,7 @@ function Tickets() {
         </h2>
 
         <p className="text-red-500 text-3xl font-bold mb-4 drop-shadow-[0_0_12px_rgba(255,0,0,0.9)]">
-          ₹189
+          ₹99
         </p>
 
         <div className="text-gray-300 mb-6">
@@ -138,9 +148,6 @@ function Tickets() {
           </p>
 
           <p>✓ Entry Access</p>
-          <p>✓ 1 Beverage</p>
-          <p>✓ French Fries</p>
-
         </div>
 
         {/* Counter */}

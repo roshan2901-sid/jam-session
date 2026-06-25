@@ -60,7 +60,7 @@ function Home() {
 </div>
 
        <p className="text-gray-300 text-lg md:text-2xl tracking-[0.3em] mb-1">
-  MANA PAATA
+  MANA PAATA 2.0
 </p>
 
 <p className="text-gray-400 text-lg md:text-2xl tracking-[0.3em]">
